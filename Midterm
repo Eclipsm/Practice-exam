@@ -1,0 +1,160 @@
+void main() {
+    
+    //create a bunch of variables 
+    int seats = 0;
+    int stop = 0;
+    int passengers = 0;
+    int max = 0;
+    int exceeds = 0;
+
+    //scan and store the bus seats and stop
+    scanf("%d %d" , &seats, &stop);
+
+    //loop at stop iteration
+    for (int BusStop = 1; BusStop <= stop; BusStop ++){
+         
+        //create a variable that holds the amount of passenger who get in and get out of the bus
+        int out , in;
+        printf("at bus stop : %d\n" , BusStop);
+        printf("passenger out and in : ");
+
+        //check if the value is positive or not
+        while (scanf("%d %d" , &out , &in))
+        {
+            if (out >= 0 && in >= 0) {break;}
+            printf("please input a positive number\n");
+        }
+
+        //do the math
+        passengers -= out;
+        passengers += in;
+
+        //check
+        //if "seats" > "max" if yes then set max to equa to the amount of seats (or passengers)
+        if (passengers > max) {max = passengers;}
+
+        //check 
+        //if theres no value inside exceeds and the number of passengers is exceeds or not 
+        //if yes then set exceeds to equal to bustop
+        if (!exceeds && passengers > seats) {exceeds = BusStop;}
+        
+    }
+
+    //if exceeds has value then print out
+    if (exceeds) {printf("passenger exceeds at bus stop %d\n" , exceeds);}
+
+    printf("Final passenger is : %d\n" , passengers);
+    printf("Max passenger is : %d\n" , max);
+    
+}
+
+10 3
+at bus stop : 1
+passenger out and in : 0 6
+at bus stop : 2
+passenger out and in : 2 10
+at bus stop : 3
+passenger out and in : 3 2
+passenger exceeds at bus stop 2
+Final passenger is : 13
+Max passenger is : 14
+
+
+
+
+#include <stdio.h>
+ 
+int main(void) {
+  // Your code started here.
+  int p, isCheese;
+  scanf("%d %d", &p, &isCheese);
+ 
+  for (int i = 0; i < p + 5; i++) {
+    if (i == 0) {
+      for (int j = 0; j < 4 * p; j++) {
+        if (j < 2 || j > (4 * p) - 3) {
+          printf("  ");
+        } else {
+          printf("B ");
+        }
+      }
+    } else if (i < 3 || i > p + 2) {
+      for (int j = 0; j < 4 * p; j++) {
+        if (j < 1 || j > (4 * p) - 2) {
+          printf("  ");
+        } else {
+          printf("B ");
+        }
+      }
+    } else {
+      for (int j = 0; j < 4 * p; j++) {
+        printf("* ");
+      }
+      if (isCheese == 1) {
+        printf("\n");
+        for (int k = 0; k < 4 * p; k++) {
+          printf("- ");
+        }
+      }
+    }
+    printf("\n");
+  }
+  return 0;
+}
+// Solution by: kanzaki_aito
+
+
+
+
+int main() {
+    int small,medium,large;
+    char saucechoice;
+    float sauceprice =0, total = 0;
+    
+ scanf("%d %d %d %c", &small, &medium, &large, &saucechoice);
+    total = (small*20)+(medium*30)+(large*40);
+    if(saucechoice == 'M'){
+        sauceprice = 15;
+    }else if(saucechoice == 'T'){
+        sauceprice = 15;
+    }else{
+        sauceprice = 0;
+    }
+    total = total + sauceprice;
+    total = total * 1.07;
+    
+    printf("Small skewers: %d\n", small);
+    printf("Medium skewers: %d\n", medium);
+    printf("Large skewers: %d\n", large);
+    printf("Total: %.2f\n", total);
+    
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
+    return 0;
+}
+
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);  // รับขนาด
+
+    for (int i = 0; i < n; i++) {         // วนแถว
+        for (int j = 0; j < n; j++) {     // วนคอลัมน์
+            // แถวบน, ล่าง หรือ คอลัมน์ซ้าย, ขวา
+            if (i == 0 || i == n-1 || j == 0 || j == n-1) {
+                printf("* ");
+            } else {
+                printf("  "); // รูตรงกลาง
+            }
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+4 4
+* * * * 
+*     * 
+*     * 
+* * * * 
