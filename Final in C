@@ -82,3 +82,78 @@ Number of People: 2
 Membership Discount: No
 Buffet Package: Deluxe Buffet
 Total Price: 50.00
+
+
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_LENGTH 51
+
+// ===== DO NOT MODIFY =====
+struct Person {
+  char name[MAX_LENGTH];
+  int age;
+};
+// =========================
+
+struct Ticket {
+  // TODO 1: Create Ticket structure (2 lines)
+  struct Person owner;
+  float price;
+  //// END
+};
+
+// ===== DO NOT MODIFY =====
+float totalPrice(struct Ticket tickets[], int size) {
+  float total = 0.0;
+  for (int i = 0; i < size; i++) {
+    total += tickets[i].price;
+  }
+  return total;
+}
+// =========================
+
+int main() {
+
+  // ===== DO NOT MODIFY =====
+  int N;
+  float full_price;
+  float total_price;
+  scanf("%d", &N);
+  scanf("%f", &full_price);
+  struct Ticket tickets[N]; // Array of tickets
+  // =========================
+
+  // TODO 2: Scan to take inputs and assign to each ticket in an array
+  for(int i= 0;i<N;i++){
+    scanf("%s %d",tickets[i].owner.name, &tickets[i].owner.age);
+    if(tickets[i].owner.age>=60){
+      tickets[i].price = tickets[i].price * 0.5;
+    }
+    else tickets[i].price = full_price;
+  }
+  
+  
+  
+  //// END
+
+  // TODO 3: call the `totalPrice` function to update the total_price variable
+  // (1 line)
+  total_price =totalPrice(tickets,N);
+  //// END
+
+  // ===== DO NOT MODIFY =====
+  for (int i = 0; i < N; i++) {
+    printf("[%d] name=%s, age=%d, price=%.2f\n", i, tickets[i].owner.name,
+           tickets[i].owner.age, tickets[i].price);
+  }
+  printf("Total Price: %.2f", total_price);
+  // =========================
+}
+
+2 15.0
+Harry 28
+Dumbledore 89
+[0] name=Harry, age=28, price=15.00
+[1] name=Dumbledore, age=89, price=0.00
+Total Price: 15.00
